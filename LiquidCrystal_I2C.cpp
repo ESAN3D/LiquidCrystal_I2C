@@ -50,6 +50,15 @@ LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t l
   _cols = lcd_cols;
   _rows = lcd_rows;
   _backlightval = LCD_NOBACKLIGHT;
+
+  _thchar[][] = {
+      {
+	  B00000,B11011,B11011,B00000,B10001,B10001,B11111,B00000  
+      },
+      {
+	  B00000,B00000,B00000,B00000,B10001,B10001,B11111,B00000  
+      }
+  }
 }
 
 void LiquidCrystal_I2C::oled_init(){
