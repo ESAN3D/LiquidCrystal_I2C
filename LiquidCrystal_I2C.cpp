@@ -51,149 +51,6 @@ LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t l
   _rows = lcd_rows;
   _backlightval = LCD_NOBACKLIGHT;
 
-  _thchar[][] = {
-      {
-	  B00000,B00000,B00000,B01111,B00101,B00101,B00101,B00101  
-      },
-      {
-	  B00000,B00000,B00000,B01101,B00101,B00101,B00101,B00111  
-      },
-      {
-	  B00000,B00000,B00000,B10101,B11101,B00101,B00101,B00111 
-      },
-      {
-	  B00000,B00000,B00000,B01111,B01001,B01101,B01001,B01001
-      },
-      {
-	  B00000,B00000,B00000,B01101,B01011,B01001,B01101,B01001
-      },
-      {
-	  B00000,B00000,B00000,B10101,B11101,B00101,B01111,B01101	//KHO RAKHANG
-      },
-      {
-	  B00000,B00000,B00000,B00011,B00001,B01001,B00101,B00011
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00001,B00111,B00001,B00001
-      },
-      {
-	  B00000,B00000,B00000,B11110,B00010,B11010,B01111,B01011
-      },
-      {
-	  B00000,B00000,B00001,B11010,B01100,B01010,B01010,B01110	//CHO CHANG
-      },
-      {
-	  B00000,B00000,B00001,B10110,B01100,B01010,B01010,B01110
-      },
-      {
-	  B00000,B00000,B00000,B11101,B10101,B10101,B11111,B11101
-      },
-      {
-	  B00000,B00000,B00000,B11101,B10101,B10101,B11101,B11111
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00101,B00101,B01101,B01101	//DO CHADA
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00101,B00101,B01101,B01101
-      },
-      {
-	  B00000,B00000,B00111,B01111,B00001,B00111,B00001,B01101
-      },
-      {
-	  B00000,B00000,B00000,B10101,B01011,B01101,B01001,B01001
-      },
-      {
-	  B00000,B00000,B00000,B11101,B10101,B11101,B11111,B10101
-      },
-      {
-	  B00000,B00000,B00000,B11101,B10101,B10101,B11111,B11101	//NO NEN
-      },
-      {
-	  B00000,B00000,B00000,B01111,B01001,B01001,B01101,B01101
-      },
-      {
-	  B00000,B00000,B00000,B01101,B01011,B01001,B01101,B01101
-      },
-      {
-	  B00000,B00000,B00000,B11111,B01001,B01001,B01101,B01101
-      },
-      {
-	  B00000,B00000,B00000,B11001,B01011,B01101,B01001,B01001	//TO THAHAN
-      },
-      {
-	  B00000,B00000,B00000,B00111,B01111,B00001,B01001,B01111
-      },
-      {
-	  B00000,B00000,B00000,B11010,B01010,B01010,B01111,B01011
-      },
-      {
-	  B00000,B00000,B00000,B11001,B01001,B01001,B01001,B01111
-      },
-      {
-	  B00000,B00001,B00001,B11001,B01001,B01001,B01001,B01111	//PO PLA
-      },
-      {
-	  B00000,B00000,B00000,B01101,B01101,B01001,B01011,B01101
-      },
-      {
-	  B00000,B00001,B00001,B01101,B01101,B01001,B01011,B01101
-      },
-      {
-	  B00000,B00000,B00000,B11001,B11001,B01001,B01101,B01011
-      },
-      {
-	  B00000,B00000,B00000,B11001,B11001,B01001,B01101,B01011	//PO PHAN
-      },
-      {
-	  B00000,B00001,B00001,B11001,B11001,B01001,B01101,B01011
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00101,B00101,B01101,B01101
-      },
-      {
-	  B00000,B00000,B00000,B01101,B00101,B00101,B01111,B01101
-      },
-      {
-	  B00000,B00000,B00000,B01101,B01001,B01101,B01001,B01111	//YO YAK
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00010,B00001,B00011,B00011
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00101,B01001,B01101,B01101
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00001,B01111,B01001,B01101
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00101,B00101,B01101,B01101	//LU
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00001,B00001,B00011,B00011
-      },
-      {
-	  B00000,B00000,B00001,B01111,B01001,B01101,B01001,B01001
-      },
-      {
-	  B00000,B00000,B00000,B11010,B01011,B01110,B01010,B01110
-      },
-      {
-	  B00000,B00000,B00001,B01111,B00001,B01111,B01001,B01101	//SO SUA
-      },
-      {
-	  B00000,B00000,B00000,B11011,B01011,B01101,B01001,B01001
-      },
-      {
-	  B00000,B00001,B00010,B11011,B01001,B01001,B01101,B01011
-      },
-      {
-	  B00000,B00000,B00000,B01111,B00001,B01101,B01001,B01111
-      },
-      {
-	  B00000,B00000,B00001,B01111,B00001,B01101,B01001,B01111	//HO NOKHUK
-      }
-  }
 }
 
 void LiquidCrystal_I2C::oled_init(){
@@ -270,6 +127,50 @@ void LiquidCrystal_I2C::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) {
 	
 	home();
   
+    //Create thai characters
+	  for(int i=0;i<7;i++){
+		createChar(i,_thchar[20+i]);
+	  }
+}
+
+/**print command override**/
+size_t LiquidCrystal_I2C::print(const String &s)
+{
+  const char* tmp = s.c_str();
+  return write(tmp, strlen(tmp));
+}
+
+size_t LiquidCrystal_I2C::createChars(const String &s)
+{
+  size_t n;
+  return n;
+}
+
+size_t LiquidCrystal_I2C::write(const uint8_t *buffer, size_t size)
+{
+  size_t n = 0;
+  uint8_t prev = 0;
+  uint8_t cpos = 0;
+  while (size--) {
+	uint8_t pos = *buffer++;
+	if(pos<184){
+		if(prev==184)
+		{
+			Serial.print(prev);Serial.print(" ");Serial.println(pos);
+			createChar(cpos,_thchar[pos-129]);
+			setCursor(n,_currow);
+			if (write(cpos)) n++;
+			else break;
+			if (cpos>7) cpos=0; else cpos++;
+		}else{
+			//if (write(*buffer++)) n++;
+			if (write(pos)) n++;
+			else break;
+		}
+	}
+	prev = pos;
+  }
+  return n;
 }
 
 /********** high level commands, for the user! */
@@ -285,6 +186,7 @@ void LiquidCrystal_I2C::home(){
 }
 
 void LiquidCrystal_I2C::setCursor(uint8_t col, uint8_t row){
+	_currow = row;
 	int row_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
 	if ( row > _numlines ) {
 		row = _numlines-1;    // we count rows starting w/0
