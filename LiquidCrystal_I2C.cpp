@@ -153,24 +153,51 @@ size_t LiquidCrystal_I2C::write(const uint8_t *buffer, size_t size)
   uint8_t cpos = 0;
   while (size--) {
 	uint8_t pos = *buffer++;
-	if(pos<184){
-		if(prev==184)
-		{
-			Serial.print(prev);Serial.print(" ");Serial.println(pos);
-			createChar(cpos,_thchar[pos-129]);
+	if((prev==184||prev==185)&&pos!=224)
+	{
+		Serial.print(prev);Serial.print(" ");Serial.println(pos);
+		if(prev==185&pos>=136&pos<=139){
+			mergeChars(n-1,_tmpchar[n-1],_thchar[pos-129+60]);
+			createChar(cpos-1,_tmpchar[n-1]);
+			setCursor(n-1,_currow);
+			if (write(cpos-1)) n=n;
+			else break;
+		}else if(pos==177||(pos>=180&&pos<=183)){
+			mergeChars(n-1,_tmpchar[n-1],_thchar[pos-129]);
+			createChar(cpos-1,_tmpchar[n-1]);
+			setCursor(n-1,_currow);
+			if (write(cpos-1)) n=n;
+			else break;
+		}else if(pos<=185&&pos>=184){
+			mergeChars(n,_thchar[pos-129],_blankchar);
+			createChar(cpos,_tmpchar[n]);
+			setCursor(n-1,_currow+1);
+			if (write(cpos)) n=n;
+			_currow--;
+			if (cpos>7) cpos=0; else cpos++;
+		}else{
+			mergeChars(n,_thchar[pos-129],_blankchar);
+			createChar(cpos,_tmpchar[n]);
 			setCursor(n,_currow);
 			if (write(cpos)) n++;
 			else break;
 			if (cpos>7) cpos=0; else cpos++;
-		}else{
-			//if (write(*buffer++)) n++;
-			if (write(pos)) n++;
-			else break;
 		}
+	}else if(pos<184){
+		//if (write(*buffer++)) n++;
+		if (write(pos)) n++;
+		else break;
 	}
 	prev = pos;
   }
   return n;
+}
+
+void LiquidCrystal_I2C::mergeChars(uint8_t n, byte *first, byte *second)
+{
+	for(int i=0;i<8;i++){
+		_tmpchar[n][i] = first[i] | second[i];
+	}
 }
 
 /********** high level commands, for the user! */
